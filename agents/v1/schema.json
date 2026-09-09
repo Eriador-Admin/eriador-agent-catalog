@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eriador.dev/schema/agent-catalog.v1.json",
+  "title": "Eriador curated agent catalog",
+  "type": "object",
+  "required": ["schema_version", "kind", "listings"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "string" },
+    "kind": { "const": "agent" },
+    "install": { "const": "tenant-record" },
+    "artifactStore": { "const": "eriador" },
+    "artifactKey": { "type": "string" },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "slug": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "sort_order": { "type": "integer" }
+        }
+      }
+    },
+    "listings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "name", "system_prompt", "current_version"],
+        "properties": {
+          "slug": { "type": "string" },
+          "name": { "type": "string" },
+          "provenance": { "type": "string" },
+          "publisher_id": { "type": "string" },
+          "trust_level": { "type": "string" },
+          "category": { "type": "string" },
+          "short_description": { "type": "string" },
+          "current_version": { "type": "string" },
+          "system_prompt": { "type": "string" },
+          "tool_allowlist": { "type": "array", "items": { "type": "string" } },
+          "tier_default": { "type": "string" },
+          "example_prompts": { "type": "array", "items": { "type": "string" } },
+          "is_active": { "type": "boolean" },
+          "is_featured": { "type": "boolean" },
+          "pricing_model": { "type": "string" },
+          "default_areas": { "type": "array", "items": { "type": "string" } },
+          "default_max_tools_visible": { "type": "integer" },
+          "default_handoff_targets": { "type": "array", "items": { "type": "string" } },
+          "default_short_description": { "type": "string" },
+          "ship_with_new_tenants": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}
