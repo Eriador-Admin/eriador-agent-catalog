@@ -11,11 +11,15 @@ Public first-party **curated agent** catalog. Browse files here; install copies 
 ## Layout
 
 ```
-agents/v1/catalog.json   listings + categories
+agents/v1/catalog.json   agent listings + categories
 agents/v1/schema.json    shape of catalog.json
+tools/v1/catalog.json    agent tool listings + categories
+tools/v1/schema.json     shape of catalog.json
 ```
 
-Each listing is `install: tenant-record` and `artifactStore: eriador`. Tenant-published agents and review queues stay in the tenant database.
+Each listing is `install: tenant-record` and `artifactStore: eriador`. Tenant-published agents and tools, and review queues, stay in the tenant database.
+
+A tool listing is a declarative tool definition (`action_type`, `action_spec`, `parameters`). Its `slug` becomes the installed tool's name, with `-` as `_`. Secrets are never part of a listing; a tool that needs a key names a placeholder the tenant fills in after install.
 
 ## What does not belong here
 

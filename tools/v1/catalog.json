@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "tool",
+  "install": "tenant-record",
+  "artifactStore": "eriador",
+  "artifactKey": "/tools/v1/catalog.json",
+  "categories": [],
+  "listings": []
+}

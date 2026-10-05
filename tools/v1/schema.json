@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eriador.dev/schema/tool-catalog.v1.json",
+  "title": "Eriador first-party agent tool catalog",
+  "type": "object",
+  "required": ["schema_version", "kind", "listings"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "string" },
+    "kind": { "const": "tool" },
+    "install": { "const": "tenant-record" },
+    "artifactStore": { "const": "eriador" },
+    "artifactKey": { "type": "string" },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "slug": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "sort_order": { "type": "integer" }
+        }
+      }
+    },
+    "listings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "name", "short_description", "current_version", "action_type", "action_spec"],
+        "additionalProperties": false,
+        "properties": {
+          "slug": { "type": "string", "pattern": "^[a-z][a-z0-9-]{1,98}$" },
+          "name": { "type": "string" },
+          "short_description": { "type": "string", "maxLength": 2000 },
+          "category": { "type": "string" },
+          "current_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+          "is_active": { "type": "boolean" },
+          "action_type": { "enum": ["http_request", "db_query", "file_transform", "webhook", "chain"] },
+          "action_spec": { "type": "object" },
+          "parameters": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "required": ["type", "description"]
+            }
+          },
+          "required_params": { "type": "array", "items": { "type": "string" } },
+          "when_to_use": { "type": "string" },
+          "when_not_to_use": { "type": "string" },
+          "requires_confirmation": { "type": "boolean" },
+          "modifies_workspace": { "type": "boolean" },
+          "max_result_length": { "type": "integer", "minimum": 1 }
+        }
+      }
+    }
+  }
+}
