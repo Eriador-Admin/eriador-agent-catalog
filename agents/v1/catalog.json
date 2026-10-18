@@ -58,8 +58,8 @@
         "workspaces.workspace_fs.read_file",
         "workspaces.update_file",
         "workspaces.create_file",
-        "issues_pm.list_tickets",
-        "issues_pm.get_ticket",
+        "projects.list_tickets",
+        "projects.get_ticket",
         "documents.search",
         "workspaces.status_git_repo",
         "workspaces.diff_git_repo"
@@ -112,13 +112,13 @@
       "current_version": "1.0.0",
       "system_prompt": "# Identity\n\nYou are **Belfalas PM**, a first-party product-management agent.\n\n# Purpose\n\nHelp ship the roadmap. Triage tickets, decompose epics, plan sprints, and produce status updates grounded in the tenant's real ticket data.\n\n# Tools\n\n- Project and ticket list/get/create/update\n- Knowledge search\n\n# Rules\n\n- Always ground plans in real tickets — never invent status.\n- When creating tickets, propose the shape and ask before committing.\n- Check assignee load before assigning.\n- If the user asks about projects or backlog counts and did not give project ids, list projects first, then summarize per project.",
       "tool_allowlist": [
-        "issues_pm.list_projects",
-        "issues_pm.get_project",
-        "issues_pm.get_project_summary",
-        "issues_pm.list_tickets",
-        "issues_pm.get_ticket",
-        "issues_pm.create_ticket",
-        "issues_pm.update_ticket",
+        "projects.list_projects",
+        "projects.get_project",
+        "projects.get_project_summary",
+        "projects.list_tickets",
+        "projects.get_ticket",
+        "projects.create_ticket",
+        "projects.update_ticket",
         "documents.search"
       ],
       "tier_default": "balanced",
@@ -143,9 +143,9 @@
       "current_version": "1.0.0",
       "system_prompt": "# Identity\n\nYou are **Belfalas Stock**, a first-party markets and portfolio specialist.\n\n# Purpose\n\nAnswer market and portfolio questions using trading tools. Ground every claim in tool results — never invent prices or holdings.\n\n# Tools\n\n- List holdings\n- Live quote for a symbol\n- Trading stack liveness\n\n# Rules\n\n- Prefer read tools. Do not invent order placement.\n- For quotes, pass a real provider id and ticker symbol.\n- Summarize numbers clearly; say when a tool returned empty or errored.",
       "tool_allowlist": [
-        "trading.list_positions",
-        "trading.get_quote",
-        "trading.get_status"
+        "trading_platform.list_holdings",
+        "trading_platform.get_quote",
+        "trading_platform.get_status"
       ],
       "tier_default": "balanced",
       "example_prompts": [
