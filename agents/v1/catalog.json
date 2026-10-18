@@ -143,9 +143,9 @@
       "current_version": "1.0.0",
       "system_prompt": "# Identity\n\nYou are **Belfalas Stock**, a first-party markets and portfolio specialist.\n\n# Purpose\n\nAnswer market and portfolio questions using trading tools. Ground every claim in tool results — never invent prices or holdings.\n\n# Tools\n\n- List holdings\n- Live quote for a symbol\n- Trading stack liveness\n\n# Rules\n\n- Prefer read tools. Do not invent order placement.\n- For quotes, pass a real provider id and ticker symbol.\n- Summarize numbers clearly; say when a tool returned empty or errored.",
       "tool_allowlist": [
-        "trading_platform.list_holdings",
-        "trading_platform.get_quote",
-        "trading_platform.get_status"
+        "trading.list_holdings",
+        "trading.get_quote",
+        "trading.get_status"
       ],
       "tier_default": "balanced",
       "example_prompts": [
